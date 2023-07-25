@@ -11,6 +11,7 @@ import pandas as pd
 
 def remover_csv():
     try:
+        #remover tudo antes de começar a atualizar
         os.remove('Y:\\Auditoria\\DADOS\\RELATORIO IMPORTADO\\importado_cte.csv')
         os.remove('Y:\\Auditoria\\DADOS\\RELATORIO IMPORTADO\\importado_nfe.csv')
         os.remove('Y:\\Auditoria\\DADOS\\RELATORIO IMPORTADO\\unidades.txt')
@@ -56,13 +57,12 @@ def ler_dist_cte():
                             os.path.getmtime(caminho_completo))
                         # Verifica se o arquivo foi modificado nos últimos 365 dias
                         if data_modificacao > inicio_do_ano_atual:
-                            # Faz algo com o arquivo
                             arquivo = str(diretorio) + ("\\") + \
                                 str(nome_arquivo)
                             xml_file = arquivo
                             tree = ET.parse(xml_file)
                             root = tree.getroot()
-                            # Extrair o número e a chave do CTe
+                            # Extrair dados do CTe
 
                             try:
                                 ns = {'cte': 'http://www.portalfiscal.inf.br/cte'}
@@ -89,7 +89,7 @@ def ler_dist_cte():
                                 xml_file = arquivo
                                 tree = ET.parse(xml_file)
                                 root = tree.getroot()
-                                # Extrair o número e a chave do NFe
+                                # Extrair dados da NFe
                                 try:
                                     ns = {
                                         'nfe': 'http://www.portalfiscal.inf.br/nfe'}
@@ -155,13 +155,12 @@ def ler_dist_imp():
                             os.path.getmtime(caminho_completo))
                         # Verifica se o arquivo foi modificado nos últimos 365 dias
                         if data_modificacao > inicio_do_ano_atual:
-                            # Faz algo com o arquivo
                             arquivo = str(diretorio) + ("\\") + \
                                 str(nome_arquivo)
                             xml_file = arquivo
                             tree = ET.parse(xml_file)
                             root = tree.getroot()
-                            # Extrair o número e a chave do CTe
+                            # Extrair dados do CTe
 
                             try:
                                 ns = {'cte': 'http://www.portalfiscal.inf.br/cte'}
@@ -188,7 +187,7 @@ def ler_dist_imp():
                                 xml_file = arquivo
                                 tree = ET.parse(xml_file)
                                 root = tree.getroot()
-                                # Extrair o número e a chave do NFe
+                                # Extrair os dados  da NFe
                                 try:
                                     ns = {
                                         'nfe': 'http://www.portalfiscal.inf.br/nfe'}
